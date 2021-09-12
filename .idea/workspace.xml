@@ -7,6 +7,7 @@
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +104,8 @@
       <workItem from="1630117187589" duration="651000" />
       <workItem from="1630118384992" duration="716000" />
       <workItem from="1630185640200" duration="3793000" />
-      <workItem from="1630442363739" duration="1250000" />
+      <workItem from="1630442363739" duration="2221000" />
+      <workItem from="1631460854427" duration="3577000" />
     </task>
     <servers />
   </component>
