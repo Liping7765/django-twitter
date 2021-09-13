@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +34,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1x6Hj0H2ueYInW1AO4JYLEOdWWG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -110,7 +105,7 @@
       <workItem from="1630118384992" duration="716000" />
       <workItem from="1630185640200" duration="3793000" />
       <workItem from="1630442363739" duration="2221000" />
-      <workItem from="1631460854427" duration="9218000" />
+      <workItem from="1631460854427" duration="19987000" />
     </task>
     <servers />
   </component>
