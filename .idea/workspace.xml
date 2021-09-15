@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/urls.py" afterDir="false" />
     </list>
@@ -105,7 +106,10 @@
       <workItem from="1630118384992" duration="716000" />
       <workItem from="1630185640200" duration="3793000" />
       <workItem from="1630442363739" duration="2221000" />
-      <workItem from="1631460854427" duration="19987000" />
+      <workItem from="1631460854427" duration="21173000" />
+      <workItem from="1631584924301" duration="2808000" />
+      <workItem from="1631667258538" duration="129000" />
+      <workItem from="1631668159148" duration="2871000" />
     </task>
     <servers />
   </component>
