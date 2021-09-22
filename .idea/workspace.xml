@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/testcases.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/testcases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,9 @@
       <workItem from="1631584924301" duration="2808000" />
       <workItem from="1631667258538" duration="129000" />
       <workItem from="1631668159148" duration="3463000" />
-      <workItem from="1632187889568" duration="2984000" />
+      <workItem from="1632187889568" duration="4265000" />
+      <workItem from="1632271741338" duration="187000" />
+      <workItem from="1632272084285" duration="4004000" />
     </task>
     <servers />
   </component>

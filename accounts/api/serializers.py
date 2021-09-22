@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework import exceptions
 
@@ -16,9 +16,6 @@ class SignupSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length = 20, min_length = 6)
     password = serializers.CharField(max_length = 20, min_length = 6)
     email = serializers.EmailField()
-
-    # TODO: add display name to the User model
-    # displayname = serializers.CharField(max_length=20, min_length=6)
 
     class Meta:
         model = User
