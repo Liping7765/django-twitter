@@ -8,7 +8,7 @@ class Comment(models.Model):
     tweet = models.ForeignKey(Tweet,on_delete=models.SET_NULL,null=True)
     content = models.CharField(max_length=140)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         index_together = (('tweet','created_at'),)
