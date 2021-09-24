@@ -10,7 +10,6 @@ FOLLOW_URL = '/api/friendships/{}/follow/'
 class NewsFeedApiTest(TestCase):
 
     def setUp(self):
-        self.anonymous_client = APIClient()
         self.alfredo = self.create_user('alfredo')
         self.alfredo_client = APIClient()
         self.alfredo_client.force_authenticate(self.alfredo)
