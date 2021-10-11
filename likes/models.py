@@ -23,6 +23,7 @@ class Like(models.Model):
         unique_together = (('user','content_type','object_id',),)
         index_together = (('content_type','object_id','created_at'),)
 
+
     def __str__(self):
         return '{} - {} liked {} {}'.format(
             self.created_at,

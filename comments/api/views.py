@@ -17,6 +17,7 @@ class CommentViewSet(viewsets.GenericViewSet):
     filterset_fields = ('tweet_id',)
 
     def get_permissions(self):
+
         if self.action == "create":
             return [IsAuthenticated()]
 
@@ -30,7 +31,11 @@ class CommentViewSet(viewsets.GenericViewSet):
         #use decorators to check required parameters.
         query_set = self.get_queryset()
         comments = self.filter_queryset(query_set).order_by('created_at')
-        serializer = CommentSerializer(comments,many=True)
+        serializer = CommentSerializer(
+            comments,
+            context={'request': request},
+            many=True,
+        )
         return Response(
             {'comments': serializer.data},
             status=status.HTTP_200_OK,
@@ -56,7 +61,7 @@ class CommentViewSet(viewsets.GenericViewSet):
         # save will trigger create() method in the serializer
         comment = serializer.save()
         return Response(
-            CommentSerializer(comment).data,
+            CommentSerializer(comment,context={'request':request}).data,
             status=status.HTTP_201_CREATED,
         )
 
@@ -74,7 +79,7 @@ class CommentViewSet(viewsets.GenericViewSet):
 
         comment = serializer.save()
         return Response(
-            CommentSerializer(comment).data,
+            CommentSerializer(comment,context={'request':request}).data,
             status=status.HTTP_200_OK,
         )
 
