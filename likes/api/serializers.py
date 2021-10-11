@@ -6,6 +6,7 @@ from tweets.models import Tweet
 from django.contrib.contenttypes.models import ContentType
 from rest_framework.exceptions import ValidationError
 
+
 class LikeSerializer(serializers.ModelSerializer):
     user = UserSerializer()
 

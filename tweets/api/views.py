@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from tweets.api.serializers import (
-    TweetCreateSerializer,
+    TweetSerializerForCreate,
     TweetSerializer,
-    TweetSerializerWithComments,
+    TweetSerializerForDetail,
 )
 from tweets.models import Tweet
 from newsfeeds.services import NewsFeedService
@@ -17,7 +17,7 @@ class TweetViewSet(
     viewsets.mixins.ListModelMixin,):
 
     queryset = Tweet.objects.all()
-    serializer_class = TweetCreateSerializer
+    serializer_class = TweetSerializerForCreate
 
     def get_permissions(self):
         if self.action in ['list','retrieve']:
@@ -26,14 +26,17 @@ class TweetViewSet(
 
     def retrieve(self,request, *args, **kwargs):
         tweet= self.get_object()
-        return Response(TweetSerializerWithComments(tweet).data)
+        return Response(TweetSerializerForDetail(
+            tweet,
+            context={"request":request},
+        ).data)
 
     def create(self, request, *args, **kwargs):
         """
         Overload create method,
         because the existed user should be used as userid.
         """
-        serializer = TweetCreateSerializer(
+        serializer = TweetSerializerForCreate(
             data= request.data,
             context = {"request": request},
         )
@@ -46,7 +49,10 @@ class TweetViewSet(
             },status=400)
         tweet = serializer.save()
         NewsFeedService.fanout_to_followers(tweet)
-        return Response(TweetSerializer(tweet).data,status = 201)
+        return Response(TweetSerializer(
+            tweet,
+            context={"request": request},
+        ).data,status = 201)
 
     @required_params(params=['user_id'])
     def list(self,request,*args, **kwargs):
@@ -56,8 +62,14 @@ class TweetViewSet(
         Replaced if_statements with decorator to check required parameters.
         """
 
-        tweets = Tweet.objects.filter(user_id = request.query_params['user_id']
-                                      ).order_by('-created_at')
-        serializer = TweetSerializer(tweets,many=True)
+        tweets = Tweet.objects.filter(
+            user_id = request.query_params['user_id']
+        ).order_by('-created_at')
+
+        serializer = TweetSerializer(
+            tweets,
+            context={"request": request},
+            many=True,
+        )
         return Response({'tweets':serializer.data})
 
