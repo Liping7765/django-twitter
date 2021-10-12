@@ -199,6 +199,5 @@ class LikeApiTests(TestCase):
         url = TWEET_DETAIL_API.format(tweet.id)
         response = self.dongxie_client.get(url)
         self.assertEqual(len(response.data['likes']), 2)
-        print(response.data)
         self.assertEqual(response.data['likes'][0]['user']['id'], self.linghu.id)
         self.assertEqual(response.data['likes'][1]['user']['id'], self.dongxie.id)
