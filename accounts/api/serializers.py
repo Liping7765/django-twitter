@@ -44,5 +44,6 @@ class SignupSerializer(serializers.ModelSerializer):
             email=email,
 
         )
+        user.profile
         return user
 
