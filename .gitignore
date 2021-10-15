@@ -4,6 +4,7 @@ Vagrantfile
 .idea/workspace.xml
 .pycharm_helpers
 .idea/
+media/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
