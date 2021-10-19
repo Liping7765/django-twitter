@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from friendships.models import Friendship
 from friendships.api.serializers import (
@@ -10,6 +11,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
 from friendships.api.paginations import FriendshipPagination
+from friendships.services import FriendshipService
+
 
 class FriendshipViewSet(viewsets.GenericViewSet):
 
@@ -48,7 +51,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
             return Response({
                 'success':True,
                 'duplicate':True,
-            },status=201)
+            },status=status.HTTP_201_CREATED)
         #if pk is not valid, return 400
         serializer = FriendshipSerializerForCreate(data={
             'from_user_id': request.user.id,
@@ -58,10 +61,11 @@ class FriendshipViewSet(viewsets.GenericViewSet):
             return  Response({
                 'success': False,
                 'error': serializer.errors,
-            },status=400)
+            },status=status.HTTP_400_BAD_REQUEST)
         #if pass above validations, return success
         serializer.save()
-        return Response({'success': True},status=201)
+        FriendshipService.invalidate_following_cache(request.user.id)
+        return Response({'success': True},status=status.HTTP_201_CREATED)
 
     # only authenticated user can initiate this follow request.
     @action(methods=["POST"], detail=True, permission_classes=[IsAuthenticated])
@@ -71,12 +75,12 @@ class FriendshipViewSet(viewsets.GenericViewSet):
             return Response({
                 'success': False,
                 'message': 'You cannot unfollow yourself.'
-            },status=400)
+            },status=status.HTTP_400_BAD_REQUEST)
 
         deleted,_ = Friendship.objects.filter(
             from_user_id=request.user.id,
             to_user_id = pk,
         ).delete()
-
+        FriendshipService.invalidate_following_cache(request.user.id)
         return Response({'success':True, 'deleted':deleted})
 
