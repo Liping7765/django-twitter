@@ -64,7 +64,6 @@ class FriendshipViewSet(viewsets.GenericViewSet):
             },status=status.HTTP_400_BAD_REQUEST)
         #if pass above validations, return success
         serializer.save()
-        FriendshipService.invalidate_following_cache(request.user.id)
         return Response({'success': True},status=status.HTTP_201_CREATED)
 
     # only authenticated user can initiate this follow request.
@@ -81,6 +80,5 @@ class FriendshipViewSet(viewsets.GenericViewSet):
             from_user_id=request.user.id,
             to_user_id = pk,
         ).delete()
-        FriendshipService.invalidate_following_cache(request.user.id)
         return Response({'success':True, 'deleted':deleted})
 

@@ -7,4 +7,4 @@ class NewsFeedsSerializer(serializers.ModelSerializer):
     tweet = TweetSerializer()
     class Meta:
         model = NewsFeed
-        fields = ('id','created_at','user','tweet')
+        fields = ('id','created_at','tweet')
