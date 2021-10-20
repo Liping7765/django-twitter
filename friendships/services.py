@@ -3,6 +3,7 @@ from django.core.cache import caches
 from friendships.models import Friendship
 from twitter.cache import FOLLOWINGS_PATTERN
 
+
 cache = caches['testing'] if settings.TESTING else caches['default']
 
 class FriendshipService(object):
@@ -34,3 +35,4 @@ class FriendshipService(object):
     def invalidate_following_cache(cls, from_user_id):
         key = FOLLOWINGS_PATTERN.format(user_id=from_user_id)
         cache.delete(key)
+
