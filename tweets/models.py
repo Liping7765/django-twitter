@@ -1,11 +1,12 @@
-from accounts.services import UserService
 from django.db import models
 from django.contrib.auth.models import User
 from utils.time_helpers import utc_now
 from likes.models import Like
 from tweets.constants import TweetPhotoStatus,TWEET_PHOTO_STATUS_CHOICES
 from django.contrib.contenttypes.models import ContentType
-
+from utils.memcached_helper import MemcachedHelper
+from django.db.models.signals import post_save
+from utils.listeners import invalidate_object_cache
 
 class Tweet(models.Model):
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
@@ -33,7 +34,7 @@ class Tweet(models.Model):
 
     @property
     def cached_user(self):
-        return UserService.get_user_through_cache(self.user_id)
+        return MemcachedHelper.get_object_through_cache(User,self.user_id)
 
 class TweetPhoto(models.Model):
     #under which tweet
@@ -65,3 +66,4 @@ class TweetPhoto(models.Model):
     def __str__(self):
         return f'{self.tweet_id}: {self.file}'
 
+post_save.connect(invalidate_object_cache,sender=Tweet)

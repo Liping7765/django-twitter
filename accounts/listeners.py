@@ -1,9 +1,3 @@
-def user_changed(sender, instance, **kwargs):
-    # import within the function to void dependency issue
-    from accounts.services import UserService
-    UserService.invalidate_user(instance.id)
-
-
 def profile_changed(sender, instance, **kwargs):
     # import within the function to void dependency issue
     from accounts.services import UserService
