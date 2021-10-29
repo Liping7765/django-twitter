@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from tweets.models import Tweet
 from likes.models import Like
 from django.contrib.contenttypes.models import ContentType
+from utils.memcached_helper import MemcachedHelper
 
 class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
@@ -32,4 +33,4 @@ class Comment(models.Model):
 
     @property
     def cached_user(self):
-        return UserService.get_user_through_cache(self.user_id)
+        return MemcachedHelper.get_object_through_cache(User,self.user_id)
