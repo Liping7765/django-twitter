@@ -61,13 +61,16 @@ class TweetViewSet(viewsets.GenericViewSet):
         not showing all tweets but just filtered by user_id.
         Replaced if_statements with decorator to check required parameters.
         """
+        user_id = request.query_params['user_id']
+        cached_tweets = TweetService.get_cached_tweets(user_id)
+        page = self.paginator.paginate_cached_list(cached_tweets, request)
 
-        tweets = TweetService.get_cached_tweets(user_id=request.query_params['user_id'])
-
-        tweets = self.paginate_queryset(tweets)
+        if page is None:
+            queryset = Tweet.objects.filter(user_id=user_id).order_by('-created_at')
+            page = self.paginate_queryset(queryset)
 
         serializer = TweetSerializer(
-            tweets,
+            page,
             context={"request": request},
             many=True,
         )

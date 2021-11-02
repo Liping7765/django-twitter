@@ -1,7 +1,7 @@
 from dateutil import parser
 from rest_framework.pagination import BasePagination
 from rest_framework.response import Response
-
+from twitter import settings
 
 class EndlessPagination(BasePagination):
     page_size = 20
@@ -41,10 +41,6 @@ class EndlessPagination(BasePagination):
 
     def paginate_queryset(self, queryset, request, view=None):
 
-        #to consider when list is passed instead of queryset
-        if type(queryset)==list:
-            return self.paginate_ordered_list(queryset,request)
-
         if 'created_at__gt' in request.query_params:
             created_at_gt = request.query_params['created_at__gt']
             queryset = queryset.filter(created_at__gt=created_at_gt)
@@ -58,6 +54,25 @@ class EndlessPagination(BasePagination):
         queryset =queryset.order_by('-created_at')[:self.page_size+1]
         self.has_next_page = len(queryset)> self.page_size
         return queryset[:self.page_size]
+
+    def paginate_cached_list(self, cached_list, request):
+        paginated_list = self.paginate_ordered_list(cached_list,request)
+
+        # if retrieve the newest data
+        if 'created_at__gt' in request.query_params:
+            return paginated_list
+
+        # if there's next page, it means still data in the cache
+        if self.has_next_page:
+            return paginated_list
+
+        # if cached_list is less than max length, it means cached_list = all database
+        if len(cached_list) < settings.REDIS_LIST_LENGTH_LIMIT:
+            return paginated_list
+
+        return None
+
+
 
 
 
