@@ -11,7 +11,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
 from friendships.api.paginations import FriendshipPagination
-from friendships.services import FriendshipService
+from django.utils.decorators import method_decorator
+from ratelimit.decorators import ratelimit
 
 
 class FriendshipViewSet(viewsets.GenericViewSet):
@@ -24,6 +25,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
 
     # anyone can see any user's followers
     @action(methods=['GET'],detail=True, permission_classes=[AllowAny])
+    @method_decorator(ratelimit(key='user_or_ip', rate='3/s', method='GET', block=True))
     def followers(self,request,pk):
 
         friendships = Friendship.objects.filter(
@@ -35,6 +37,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
 
     # anyone can see any user's followings
     @action(methods=["GET"],detail=True,permission_classes = [AllowAny])
+    @method_decorator(ratelimit(key='user_or_ip', rate='3/s', method='GET', block=True))
     def followings(self,request,pk):
         friendships = Friendship.objects.filter(
             from_user_id=pk,
@@ -45,6 +48,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
 
     #only authenticated user can initiate this follow request.
     @action(methods=["POST"], detail=True, permission_classes=[IsAuthenticated])
+    @method_decorator(ratelimit(key='user', rate='10/s', method='POST', block=True))
     def follow(self, request, pk):
         #if already follow, return 201
         if Friendship.objects.filter(from_user=request.user,to_user=pk).exists():
@@ -68,6 +72,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
 
     # only authenticated user can initiate this follow request.
     @action(methods=["POST"], detail=True, permission_classes=[IsAuthenticated])
+    @method_decorator(ratelimit(key='user', rate='10/s', method='POST', block=True))
     def unfollow(self, request, pk):
         #if unfollow user itself, return 400
         if request.user.id  == int(pk):
