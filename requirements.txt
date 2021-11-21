@@ -74,3 +74,6 @@ wcwidth==0.2.5
 wrapt==1.12.1
 zipp==3.6.0
 zope.interface==4.3.2
+happybase==1.2.0
+ply==3.11
+thriftpy2==0.4.14
