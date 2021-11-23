@@ -105,8 +105,7 @@ DATABASES = {
     }
 }
 
-# HBase Database
-HBASE_HOST = '127.0.0.1'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -211,6 +210,9 @@ RATELIMIT_USE_CACHE = 'ratelimit'
 RATELIMIT_CACHE_PREFIX = 'rl:'  #avoid key conflict
 RATELIMIT_ENABLE = not TESTING # let rate limit not run when testing
 
+# HBase Database
+# Reset Local IP Address for Using HBase and Thrift
+HBASE_HOST = '127.0.0.1' if not TESTING else '192.168.33.10'
 
 try:
     from .local_settings import *

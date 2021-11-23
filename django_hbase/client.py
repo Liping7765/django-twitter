@@ -10,5 +10,5 @@ class HBaseClient:
     def get_connection(cls):
         if cls.conn:
             return cls.conn
-        cls.conn = happybase.Connection(settings.HBASE_HOST)
+        cls.conn = happybase.Connection(host='192.168.33.10',port=9090,autoconnect=True,protocol = 'compact')
         return cls.conn
