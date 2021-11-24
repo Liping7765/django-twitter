@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/django_hbase/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/friendships/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/testcases.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/testcases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,7 +177,8 @@
       <workItem from="1636593204683" duration="1397000" />
       <workItem from="1637373331100" duration="625000" />
       <workItem from="1637457753390" duration="7490000" />
-      <workItem from="1637629394583" duration="8649000" />
+      <workItem from="1637629394583" duration="11091000" />
+      <workItem from="1637720430490" duration="1838000" />
     </task>
     <servers />
   </component>
