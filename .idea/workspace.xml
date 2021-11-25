@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_hbase/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friendships/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friendships/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/redis_helper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +178,8 @@
       <workItem from="1637373331100" duration="625000" />
       <workItem from="1637457753390" duration="7490000" />
       <workItem from="1637629394583" duration="11091000" />
-      <workItem from="1637720430490" duration="1838000" />
+      <workItem from="1637720430490" duration="2637000" />
+      <workItem from="1637807126926" duration="4388000" />
     </task>
     <servers />
   </component>
