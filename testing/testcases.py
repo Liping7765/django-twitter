@@ -1,21 +1,19 @@
 from comments.models import Comment
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.core.cache import caches
 from django.test import TestCase as DjangoTestCase
+from django_hbase.models import HBaseModel
+from friendships.services import FriendshipService
 from likes.models import Like
 from newsfeeds.models import NewsFeed
 from rest_framework.test import APIClient
 from tweets.models import Tweet
-from django.core.cache import caches
 from utils.redis_client import RedisClient
-from friendships.models import Friendship
-from django_hbase.models import HBaseModel
+from gatekeeper.models import GateKeeper
 
 class TestCase(DjangoTestCase):
     hbase_tables_created = False
-
-    #relocate the setUp function to Friendships/tests.py
-    """
     def setUp(self):
         self.clear_cache()
         try:
@@ -25,7 +23,6 @@ class TestCase(DjangoTestCase):
         except Exception:
             self.tearDown()
             raise
-    """
 
     def tearDown(self):
         if not self.hbase_tables_created:
@@ -37,6 +34,8 @@ class TestCase(DjangoTestCase):
     def clear_cache(self):
         RedisClient.clear()
         caches['testing'].clear()
+        #this line is to turn on Hbase/mySQL
+        GateKeeper.set_kv('switch_friendship_to_hbase','percent',100)
 
     @property
     def anonymous_client(self):
@@ -55,7 +54,7 @@ class TestCase(DjangoTestCase):
         return User.objects.create_user(username, email, password)
 
     def create_friendship(self, from_user, to_user):
-        return Friendship.objects.create(from_user=from_user, to_user=to_user)
+        return FriendshipService.follow(from_user.id, to_user.id)
 
     def create_tweet(self, user, content=None):
         if content is None:
