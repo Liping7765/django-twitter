@@ -5,7 +5,7 @@ from testing.testcases import TestCase
 class UserProfileTests(TestCase):
 
     def test_profile_property(self):
-        self.clear_cache()
+        super(UserProfileTests, self).setUp()
         linghu = self.create_user('linghu')
         self.assertEqual(UserProfile.objects.count(), 0)
         p = linghu.profile
