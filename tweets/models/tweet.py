@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from utils.time_helpers import utc_now
 from likes.models import Like
-from tweets.constants import TweetPhotoStatus,TWEET_PHOTO_STATUS_CHOICES
 from django.contrib.contenttypes.models import ContentType
 from utils.memcached_helper import MemcachedHelper
 from django.db.models.signals import post_save
@@ -41,35 +40,7 @@ class Tweet(models.Model):
     def cached_user(self):
         return MemcachedHelper.get_object_through_cache(User,self.user_id)
 
-class TweetPhoto(models.Model):
-    #under which tweet
-    tweet = models.ForeignKey(Tweet,on_delete=models.SET_NULL,null=True)
-    #under which user
-    user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
 
-    #photo info
-    file = models.FileField()
-    order = models.IntegerField(default=0)
-
-    status = models.IntegerField(
-        default= TweetPhotoStatus.PENDING,
-        choices= TWEET_PHOTO_STATUS_CHOICES,
-    )
-
-    has_deleted = models.BooleanField(default=False)
-    deleted_at = models.DateTimeField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        index_together = (
-            ('user', 'created_at'),
-            ('has_deleted', 'created_at'),
-            ('status', 'created_at'),
-            ('tweet', 'order'),
-        )
-
-    def __str__(self):
-        return f'{self.tweet_id}: {self.file}'
 
 post_save.connect(invalidate_object_cache,sender=Tweet)
 post_save.connect(push_tweet_to_cache,sender=Tweet)
