@@ -1,11 +1,12 @@
+from django.utils.decorators import method_decorator
+from gatekeeper.models import GateKeeper
+from newsfeeds.api.serializers import NewsFeedSerializer
+from newsfeeds.models import NewsFeed, HBaseNewsFeed
+from newsfeeds.services import NewsFeedService
+from ratelimit.decorators import ratelimit
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from newsfeeds.models import NewsFeed
-from newsfeeds.api.serializers import NewsFeedsSerializer
 from utils.paginations import EndlessPagination
-from newsfeeds.services import NewsFeedService
-from django.utils.decorators import method_decorator
-from ratelimit.decorators import ratelimit
 
 class NewsFeedViewSet(viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
@@ -17,10 +18,13 @@ class NewsFeedViewSet(viewsets.GenericViewSet):
         page = self.paginator.paginate_cached_list(cached_newsfeeds,request)
 
         if page is None:
-            queryset = NewsFeed.objects.filter(user=request.user)
-            page = self.paginate_queryset(queryset)
+            if GateKeeper.is_switch_on('switch_newsfeed_to_hbase'):
+                page = self.paginator.paginate_hbase(HBaseNewsFeed, (request.user.id,), request)
+            else:
+                queryset = NewsFeed.objects.filter(user=request.user)
+                page = self.paginate_queryset(queryset)
 
-        serializer = NewsFeedsSerializer(
+        serializer = NewsFeedSerializer(
             page,
             context={"request":request},
             many=True,
