@@ -6,17 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c3f350-b4ef-407c-a0b2-73ee4acbc5e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_hbase/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_hbase/models/fields.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/models/fields.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_hbase/models/hbase_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/hbase_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/models/hbase_friendship.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/models/friendship.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatekeeper/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gatekeeper/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newsfeeds/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsfeeds/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/models/newsfeed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models/tweet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/testcases.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/testcases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/models/tweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models/tweet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/paginations.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/paginations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/redis_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis_serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/redis_serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +192,8 @@
       <workItem from="1637720430490" duration="2637000" />
       <workItem from="1637807126926" duration="4986000" />
       <workItem from="1638233632775" duration="3951000" />
-      <workItem from="1638331687007" duration="1469000" />
+      <workItem from="1638331687007" duration="2071000" />
+      <workItem from="1638411983070" duration="4345000" />
     </task>
     <servers />
   </component>
