@@ -2,7 +2,7 @@
 
 ### **Backend Project – Twitter** [<img src='https://help.twitter.com/content/dam/help-twitter/brand/logo.png' alt='twitter' height='40'>]()
 
-Summary: This project is to design, develop, and implement Restful APIs to operate Twitter-like backend service as close to real-world development as posible based on Django REST Framework. For performation opimization, structured and unstructured databases are implemented in this project according to nature of the tables.
+Summary: This project is to design, develop, and implement Restful APIs to operate Twitter-like backend service as close to real-world development as possible based on Django REST Framework. For performance optimization, structured and unstructured databases are implemented in this project according to the nature of the tables.
 
 > **Tech Stack: Python, Django, MySQL, HBase, Redis, Memcached, RabbitMQ, Amazon S3**
 
