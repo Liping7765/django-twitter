@@ -20,4 +20,5 @@ Summary: This project is to design, develop, and implement Restful APIs to opera
 - Allow users to view, comment, and like others' posts, also users can cancel their comments and likes on the posts
 - Allow users to create, delete, update posts and view the count of likes and comments of their posts
 - Send out newfeeds to followers
+- Display tweets in Newfeeds in endless pagination format 
 
